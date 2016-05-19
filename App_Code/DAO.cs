@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+
 using System.Linq;
 using System.Web;
+using MySql.Data.MySqlClient;
+
 
 namespace Portal_MVC.Modelo
 { 
@@ -32,7 +34,7 @@ namespace Portal_MVC.Modelo
 
             c.con.Open();
             String select = "select * from tb_funcionario where id_funcionario='"+id+"'";
-            c.sen = new SqlCommand(select, c.con);
+            c.sen = new MySqlCommand(select, c.con);
 
             c.rs = c.sen.ExecuteReader();
 
@@ -43,8 +45,8 @@ namespace Portal_MVC.Modelo
                 f.Idade = int.Parse(c.rs[2].ToString());
                 f.Matricula = c.rs[3].ToString();
                 f.Cargo = c.rs[4].ToString();
-                f.Salario = double.Parse(c.rs[5].ToString());
-                f.DataNasc = c.rs[6].ToString();
+                f.Salario = double.Parse(c.rs[6].ToString());
+                f.DataNasc = c.rs[7].ToString();
             }
 
 
@@ -68,7 +70,7 @@ namespace Portal_MVC.Modelo
         //Inserir, atualizar ou deletar
         private void executar(String sql) {
             c.con.Open();
-            c.sen = new SqlCommand(sql, c.con);
+            c.sen = new MySqlCommand(sql, c.con);
             c.sen.ExecuteNonQuery();
             c.con.Close();
         

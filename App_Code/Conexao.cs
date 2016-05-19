@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Data;
 using MySql.Data.MySqlClient;
+using MySql.Data;
+
 
 
 
@@ -12,14 +14,14 @@ namespace Portal_MVC.Modelo
 
     public class Conexao
     {
-        public SqlConnection con;
-        public SqlCommand sen;
-        public SqlDataReader rs;
+        public MySqlConnection con;
+        public MySqlCommand sen;
+        public MySqlDataReader rs;
 
 
         public Conexao()
         {
-            con = new SqlConnection("Data Source=localhost;Initial Catalog=world;Persist Security Info=True;User ID=root;Password=root");
+            con = new MySqlConnection("Data Source=localhost;Initial Catalog=world;Persist Security Info=True;User ID=root;Password=root");
         } 
     
      
